@@ -22,7 +22,23 @@ Test Framework Features
 #### Test Tagging
 
 Tests may be added to one or more group using the @Tag annotation at the top of the test case.
-By default, all tests will be run unless marked with an excluded tag 
+By default, all tests will be run unless marked with an excluded tag.
+
+Common tags
+ * @smoke
+ * @regression
+ * @flow
+ * @bug [bugid]
+
+Feature tags:
+
+ * @login
+ * @vendors
+ * @order
+ * @offers
+ * @orders
+ * @cart
+
 
 Decisions
 ---------
