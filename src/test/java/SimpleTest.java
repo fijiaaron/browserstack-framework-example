@@ -29,6 +29,7 @@ public class SimpleTest extends BaseTest
         while(count < 5 * 60) // run for 5 minutes
         {
             Thread.sleep(1000);
+            count++;
         }
 
         assertThat(count).isEqualTo(300);
