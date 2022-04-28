@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class SimpleSeleniumTest extends BaseTest
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class SimpleSeleniumTest extends SeleniumTestBase
 {
     @Tag("selenium")
     @Tag("smoke")
@@ -11,6 +13,9 @@ public class SimpleSeleniumTest extends BaseTest
         String url = "https://www.bstackdemo.com/";
         driver.get(url);
 
-        System.out.println("got title: " + driver.getTitle());
+        String title = driver.getTitle();
+        log.info("got title: " + title);
+
+        assertThat(title).isEqualTo("StackDemo");
     }
 }
