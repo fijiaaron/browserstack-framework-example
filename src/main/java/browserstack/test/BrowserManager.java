@@ -27,7 +27,6 @@ public class BrowserManager
     public WebDriver getDriver() throws MalformedURLException
     {
         String platform = properties.getProperty("platform", "localhost");
-
         log.info("platform: " + platform);
 
         switch (platform.toUpperCase())
@@ -64,8 +63,7 @@ public class BrowserManager
         log.info("capabilities: " + capabilities);
 
         URL url = new URL(browserstackUrl);
-        WebDriver driver = new RemoteWebDriver(url, capabilities);
-        return driver;
+        return new RemoteWebDriver(url, capabilities);
     }
 
 
@@ -81,8 +79,7 @@ public class BrowserManager
         log.info("url: " + seleniumURL);
         log.info("capabilities: " + capabilities);
 
-        WebDriver driver = new RemoteWebDriver(seleniumURL, capabilities);
-        return driver;
+        return new RemoteWebDriver(seleniumURL, capabilities);
     }
 
 
