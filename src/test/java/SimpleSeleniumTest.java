@@ -3,18 +3,13 @@ import browserstack.test.pages.SignedInPage;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleSeleniumTest extends SeleniumTestBase
 {
     @Tag("selenium")
     @Tag("smoke")
-//    @Disabled
+    @Disabled
     @Test
     public void openHomePage()
     {
