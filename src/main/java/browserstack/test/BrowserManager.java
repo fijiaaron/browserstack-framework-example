@@ -2,7 +2,6 @@ package browserstack.test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -91,7 +90,7 @@ public class BrowserManager
             System.setProperty("webdriver.chrome.driver", chromedriver_path);
         }
 
-        log.info("using chromedriver: " + System.getProperty("webdriver.chrome.driver"));
+        log.info("using chromedriver path: " + System.getProperty("webdriver.chrome.driver"));
 
         //TODO: add Chrome Options
         return new ChromeDriver();

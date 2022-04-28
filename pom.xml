@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <parallel.count>5</parallel.count>
     </properties>
 
     <dependencies>
@@ -18,6 +19,11 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M6</version>
         </dependency>
         <!-- test only dependencies -->
         <dependency>
@@ -57,15 +63,29 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0-M6</version>
                 <configuration>
                     <!-- number of tests to run in parallel -->
                     <threadCount>10</threadCount>
 
-                    <!-- run tests by tag -->
+
+                    <systemPropertyVariables>
+                        <config>parallel</config>
+                    </systemPropertyVariables>
+
+
                     <properties>
+                        <!-- run tests by tag -->
                         <includeTags>smoke</includeTags>
                         <excludeTags>slow</excludeTags>
+
+                        <!-- parallel configuration -->
+                        <configurationParameters>
+                            junit.jupiter.execution.parallel.enabled = true
+                            junit.jupiter.execution.parallel.mode.default = concurrent
+                            junit.jupiter.execution.parallel.config.strategy=fixed
+                            junit.jupiter.execution.parallel.config.fixed.parallelism=${parallel.count}
+                        </configurationParameters>
                     </properties>
                 </configuration>
             </plugin>

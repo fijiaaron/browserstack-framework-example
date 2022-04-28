@@ -3,12 +3,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.BuildInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -20,15 +20,15 @@ public abstract class SeleniumTestBase
     TestInfo testInfo;
     String build = "default build";
     Properties properties;
+    String baseurl;
 
     WebDriver driver;
-    WebDriverWait wait;
 
     public SeleniumTestBase()
     {
         log = Logger.getLogger(this.getClass().getName());
         log.info("Instantiated test");
-        String build = System.getenv("build");
+        build = System.getenv("build");
     }
 
 
@@ -46,6 +46,7 @@ public abstract class SeleniumTestBase
             log.info("getting browser...");
             BrowserManager browserManager = new BrowserManager(properties);
             driver = browserManager.getDriver();
+            baseurl = properties.getProperty("baseUrl", "https://www.bstackdemo.com");
         }
     }
 
@@ -72,7 +73,11 @@ public abstract class SeleniumTestBase
         properties.setProperty("os_version", "11");
         properties.setProperty("platform", "browserstack");
         properties.setProperty("test_name", this.testInfo.getDisplayName());
-        properties.setProperty("build", build);
+
+        if (build != null)
+        {
+            properties.setProperty("build", build);
+        }
 
         // load properties from file (src/main/resources/test.properties)
         try
