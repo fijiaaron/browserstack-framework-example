@@ -64,7 +64,7 @@
 
                     <!-- run tests by tag -->
                     <properties>
-<!--                        <includeTags>smoke</includeTags>-->
+                        <includeTags>smoke</includeTags>
                         <excludeTags>slow</excludeTags>
                     </properties>
                 </configuration>

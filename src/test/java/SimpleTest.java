@@ -1,26 +1,27 @@
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SimpleTest extends SeleniumTest
+public class SimpleTest extends BaseTest
 {
-    @Tag("passing") @Tag("smoke")
+    @Tag("passing")
+    @Tag("smoke")
     @Test
     public void testSanity()
     {
         assertThat(true).isEqualTo(true);
     }
 
-    @Tag("failing") @Tag("smoke")
+    @Tag("failing")
+    @Tag("smoke")
     @Test
     public void testInsanity()
     {
         assertThat(false).isEqualTo(true);
     }
 
-    @Tag("slow") @Tag("smoke")
+    @Tag("slow")@Tag("smoke")
     @Test
     public void testSlowly() throws InterruptedException
     {
