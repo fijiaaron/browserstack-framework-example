@@ -50,12 +50,6 @@
             <version>3.13.6</version>
             <classifier>standalone</classifier>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.maven.surefire</groupId>-->
-<!--            <artifactId>surefire-logger-api</artifactId>-->
-<!--            <version>3.0.0-M6</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
