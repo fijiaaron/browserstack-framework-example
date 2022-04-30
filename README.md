@@ -18,7 +18,7 @@ Test Framework Features
 ### Cross-platform execution
 ### CI/CD pipeline integration
 
-Read more about the Framework at [Framework.md]
+Read more about the [Example Test Framework](Framework.md)
 
 #### Test Tagging
 
