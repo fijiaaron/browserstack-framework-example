@@ -106,6 +106,8 @@ TODO
 Test parallelization can be accomplished via maven surefire.
 You can also separate tests into different suites to run as part of different jobs
 
+Running tests in parallel on multiple browsers at the same time is not yet implemented.
+
 You can set up jenkins jobs or github actions to execute a test run on every commit, deployment, or nightly.
 
 If you set the `BUILD_TAG` environment variable, Browserstack will be able to group all tests run in a single build together for improved reporting.
