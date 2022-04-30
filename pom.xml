@@ -44,6 +44,12 @@
             <version>1.3.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.13.6</version>
+            <classifier>standalone</classifier>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.apache.maven.surefire</groupId>-->
 <!--            <artifactId>surefire-logger-api</artifactId>-->

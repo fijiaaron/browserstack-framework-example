@@ -4,16 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.Duration;
 import java.util.Properties;
 import java.util.logging.Logger;
 
 @ExtendWith(TestResultExtension.class)
-public abstract class SeleniumTestBase
+public abstract class SeleniumTest
 {
     Logger log;
 
@@ -24,11 +22,11 @@ public abstract class SeleniumTestBase
 
     WebDriver driver;
 
-    public SeleniumTestBase()
+    public SeleniumTest()
     {
         log = Logger.getLogger(this.getClass().getName());
         log.info("Instantiated test");
-        build = System.getenv("build");
+        build = System.getenv("BUILD_TAG");
     }
 
 

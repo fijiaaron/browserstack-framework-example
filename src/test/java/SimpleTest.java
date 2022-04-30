@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SimpleTest extends SeleniumTestBase
+public class SimpleTest extends SeleniumTest
 {
     @Tag("passing")
     @Tag("smoke")

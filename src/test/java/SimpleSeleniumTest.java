@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SimpleSeleniumTest extends SeleniumTestBase
+public class SimpleSeleniumTest extends SeleniumTest
 {
     @Tag("selenium")
     @Tag("smoke")
     @Disabled
     @Test
-    public void openHomePage()
+    public void testHomePage()
     {
         String url = baseurl;
         driver.get(url);
@@ -27,7 +27,7 @@ public class SimpleSeleniumTest extends SeleniumTestBase
     @Tag("smoke")
     @Tag("login")
     @Test
-    public void loginTest()
+    public void testLogin()
     {
         var loginPage = new LoginPage(driver, baseurl);
         loginPage.open();
