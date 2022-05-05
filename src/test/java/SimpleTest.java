@@ -21,7 +21,8 @@ public class SimpleTest extends SeleniumTest
         assertThat(false).isEqualTo(true);
     }
 
-    @Tag("slow")@Tag("smoke")
+    @Tag("slow")
+    @Tag("smoke")
     @Test
     public void testSlowly() throws InterruptedException
     {
@@ -33,5 +34,20 @@ public class SimpleTest extends SeleniumTest
         }
 
         assertThat(count).isEqualTo(300);
+    }
+
+    @Tag("slow")
+    @Tag("smoke")
+    @Test
+    public void testModeratelySlowly() throws InterruptedException
+    {
+        int count = 0;
+        while(count < 1 * 60) // run for 5 minutes
+        {
+            Thread.sleep(1000);
+            count++;
+        }
+
+        assertThat(count).isEqualTo(60);
     }
 }

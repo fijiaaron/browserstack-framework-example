@@ -1,4 +1,4 @@
-package browserstack.test.pages;
+package bstackdemo.test.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

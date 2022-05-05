@@ -1,4 +1,4 @@
-package browserstack.test;
+package com.browserstack.framework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,7 +42,7 @@ public class BrowserManager
     }
 
 
-    public WebDriver getBrowserStackDriver() throws MalformedURLException
+    public RemoteWebDriver getBrowserStackDriver() throws MalformedURLException
     {
         String username = System.getenv("BROWSERSTACK_USERNAME");
         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
@@ -66,7 +66,7 @@ public class BrowserManager
     }
 
 
-    public WebDriver getLocalDriver() throws MalformedURLException
+    public RemoteWebDriver getLocalDriver() throws MalformedURLException
     {
         URL seleniumURL = new URL("http://localhost:4444/wd/hub");
 

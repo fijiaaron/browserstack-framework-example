@@ -1,3 +1,5 @@
+package bstackdemo.test;
+
 import com.browserstack.framework.BrowserManager;
 import com.browserstack.framework.BrowserStackExtension;
 import org.junit.jupiter.api.AfterEach;
@@ -59,6 +61,10 @@ public abstract class SeleniumTest
                 sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
                 System.out.println("sessionId: " + sessionId);
                 browserStackExtension.setSessionId(sessionId);
+            }
+            else
+            {
+                log.info("not running remote webdriver");
             }
 
             baseurl = properties.getProperty("baseUrl", "https://www.bstackdemo.com");

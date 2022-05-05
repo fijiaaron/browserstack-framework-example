@@ -1,4 +1,4 @@
-package browserstack.test.pages;
+package bstackdemo.test.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -30,7 +30,7 @@ public class LoginPage extends SeleniumPage
     public LoginPage enterUsername(String username)
     {
         WebElement usernameField = wait.until(elementToBeClickable(LoginPage.usernameField));
-        usernameField.sendKeys("demouser" + Keys.ENTER);
+        usernameField.sendKeys(username, Keys.ENTER);
         delay();
         return this;
     }
@@ -38,7 +38,7 @@ public class LoginPage extends SeleniumPage
     public LoginPage enterPassword(String password)
     {
         // should not include test data like username or password in page objects
-        whenActive(passwordField).sendKeys("testingisfun99" + Keys.ENTER);
+        whenActive(passwordField).sendKeys(password,  Keys.ENTER);
         delay();
         return this;
     }
@@ -75,4 +75,10 @@ public class LoginPage extends SeleniumPage
 
         //TODO: sanity check that login succeeded
     }
+
+	public String getErrorMessage()
+	{
+        By errorMessageLocator = By.cssSelector((".api-error"));
+        return whenVisible(errorMessageLocator).getText();
+	}
 }
