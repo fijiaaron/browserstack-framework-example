@@ -4,9 +4,6 @@ import bstackdemo.test.pages.LoginPage;
 import bstackdemo.test.pages.SignedInPage;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.openqa.selenium.Keys;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
