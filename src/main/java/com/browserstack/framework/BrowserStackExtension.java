@@ -11,6 +11,9 @@ import java.util.logging.Logger;
 
 public class BrowserStackExtension implements AfterEachMethodAdapter
 {
+	String BROWSERSTACK_USERNAME = System.getenv("BROWSERSTACK_USERNAME");
+	String BROWSERSTACK_ACCESS_KEY = System.getenv("BROWSERSTACK_ACCESS_KEY");
+
 	Logger log = Logger.getLogger(BrowserStackExtension.class.getSimpleName());
 
 	Boolean onBrowserStack = true;
@@ -44,9 +47,6 @@ public class BrowserStackExtension implements AfterEachMethodAdapter
 	{
 		String url =  "https://api.browserstack.com/automate/sessions/<session-id>.json"
 				.replace("<session-id>", sessionId);
-
-		String BROWSERSTACK_USERNAME = System.getenv("BROWSERSTACK_USERNAME");
-		String BROWSERSTACK_ACCESS_KEY = System.getenv("BROWSERSTACK_ACCESS_KEY");
 
 		String json = new TestStatus(status, reason).toJson();
 
