@@ -30,7 +30,7 @@ public class BrowserStackTest
 	public void setup(TestInfo test) throws MalformedURLException
 	{
 		browserstackProperties.setProperty("name", test.getDisplayName());
-		browserstackProperties.setProperty("build", "Browserstack Framework Tests");
+		browserstackProperties.setProperty("build", "Testing Browserstack Framework");
 
 		driver = new BrowserManager(browserstackProperties).getBrowserStackDriver();
 		browserStackExtension.setSessionId(driver.getSessionId().toString());
@@ -53,6 +53,7 @@ public class BrowserStackTest
 		assertThat(title).contains("One Shore");
 	}
 
+
 	@Test
 	public void openPageFailure()
 	{
@@ -66,6 +67,7 @@ public class BrowserStackTest
 
 		assertThat(title).doesNotContain("One Shore");
 	}
+
 
 	@AfterEach
 	public void teardown()
@@ -83,7 +85,5 @@ public class BrowserStackTest
 		setProperty("browser_version", "latest");
 		setProperty("os", "windows");
 		setProperty("os_version:", "10");
-		setProperty("name", "BrowserstackTest");
-		setProperty("build", "testing framework");
 	}};
 }

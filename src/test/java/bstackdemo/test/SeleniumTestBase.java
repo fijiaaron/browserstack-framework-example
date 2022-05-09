@@ -17,7 +17,7 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 @Execution(ExecutionMode.CONCURRENT)
-public abstract class SeleniumTest
+public abstract class SeleniumTestBase
 {
     Logger log;
 
@@ -32,7 +32,7 @@ public abstract class SeleniumTest
     @RegisterExtension
     BrowserStackExtension browserStackExtension = new BrowserStackExtension();
 
-    public SeleniumTest()
+    public SeleniumTestBase()
     {
         log = Logger.getLogger(this.getClass().getName());
         log.info("Instantiated test");
