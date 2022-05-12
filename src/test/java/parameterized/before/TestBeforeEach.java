@@ -33,6 +33,7 @@ public class TestBeforeEach
 	public String currentMethod()
 	{
 		StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+		print(stacktrace);
 		return stacktrace[2].getMethodName();
 	}
 

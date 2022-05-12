@@ -85,6 +85,8 @@
 ## Parameterized Tests
 TODO 
  - parallel run browser / os / versions
+   - done using 
+ - config based parallelism
  - 
 
 ## Test Report
