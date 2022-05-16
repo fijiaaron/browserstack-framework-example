@@ -20,15 +20,16 @@ public class CrossBrowserTest
 {
 	RemoteWebDriver browser;
 	Properties browserStackProperties = new Properties();
+	String testName;
 
 	@RegisterExtension
 	BrowserStackExtension browserStackExtension = new BrowserStackExtension();
 
 
 	@BeforeEach
-	public void setup(TestInfo test) throws MalformedURLException
+	public void setup(TestInfo testInfo) throws MalformedURLException
 	{
-		browserStackProperties.setProperty("name", test.getDisplayName());
+		browserStackProperties.setProperty("test_name", getTestName(testInfo));
 		browserStackProperties.setProperty("build", "Testing Browserstack Framework");
 	}
 
@@ -37,8 +38,9 @@ public class CrossBrowserTest
 	@ValueSource(strings = {"chrome", "firefox", "edge"})
 	public void openPage(String browserName, TestInfo testInfo) throws MalformedURLException
 	{
-		System.out.println("Getting browser: " + browserName + " for test: " + testInfo.getDisplayName());
+		System.out.println("Getting browser: " + browserName + " for test: " + testName);
 		browser = getBrowser(browserName);
+
 		browser.get("https://bstackdemo.com/");
 		String title = browser.getTitle();
 
@@ -55,6 +57,22 @@ public class CrossBrowserTest
 
 		return browser;
 	}
+
+	public String getTestName(TestInfo testInfo)
+	{
+		String className = testInfo.getTestClass().get().getSimpleName();
+		String methodName = testInfo.getTestMethod().get().getName();
+		String displayName = testInfo.getDisplayName();
+
+		if (! displayName.equals(methodName))
+		{
+			displayName = methodName + displayName;
+		}
+
+		testName = className + " " + displayName;
+		return testName;
+	}
+
 
 	@AfterEach
 	public void tearDown()
