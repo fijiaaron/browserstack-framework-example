@@ -30,7 +30,7 @@ public class CrossBrowserTest
 	public void setup(TestInfo testInfo) throws MalformedURLException
 	{
 		browserStackProperties.setProperty("test_name", getTestName(testInfo));
-		browserStackProperties.setProperty("build", "Testing Browserstack Framework");
+		browserStackProperties.setProperty("build", "Test Framework Example");
 	}
 
 
