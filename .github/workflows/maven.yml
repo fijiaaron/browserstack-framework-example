@@ -3,13 +3,16 @@
 
 name: Java CI with Maven
 
+
+env: 
+  BUILD_TAG: Github Actions
+
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+  [workflow_dispatch]
   
 jobs:
   build:
@@ -24,5 +27,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - env: 
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
     - name: Build with Maven
       run: mvn -B test --file pom.xml
