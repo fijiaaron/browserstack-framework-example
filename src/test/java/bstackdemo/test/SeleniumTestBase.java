@@ -22,7 +22,8 @@ public abstract class SeleniumTestBase
     Logger log;
 
     TestInfo testInfo;
-    String build = "no build";
+    String testName;
+    String build;
     Properties properties;
     String baseurl;
 
@@ -36,7 +37,6 @@ public abstract class SeleniumTestBase
     {
         log = Logger.getLogger(this.getClass().getName());
         log.info("Instantiated test");
-        build = System.getenv("BUILD_TAG");
     }
 
 
@@ -93,13 +93,8 @@ public abstract class SeleniumTestBase
         properties.setProperty("os", "Windows");
         properties.setProperty("os_version", "11");
         properties.setProperty("platform", "browserstack");
-        properties.setProperty("test_name", this.testInfo.getDisplayName());
-
-        // set build
-        if (build != null)
-        {
-            properties.setProperty("build", build);
-        }
+        properties.setProperty("test_name", getTestName(testInfo));
+        properties.setProperty("build", getBuild());
 
         // load properties from file (src/main/resources/test.properties)
         try
@@ -115,6 +110,36 @@ public abstract class SeleniumTestBase
 
         return properties;
     }
+
+
+
+    public String getTestName(TestInfo testInfo)
+    {
+        String className = testInfo.getTestClass().get().getSimpleName();
+        String methodName = testInfo.getTestMethod().get().getName();
+        String displayName = testInfo.getDisplayName();
+
+        if (! displayName.equals(methodName))
+        {
+            displayName = methodName + displayName;
+        }
+
+        testName = className + " " + displayName;
+        return testName;
+    }
+
+
+    public String getBuild()
+    {
+        String build = System.getenv("BUILD_TAG");
+
+        if (build == null) {
+            build = "no build";
+        }
+
+        return build;
+    }
+
 
     // this should only be used for debugging purposes
     // used by delay() to slow down execution to watch steps

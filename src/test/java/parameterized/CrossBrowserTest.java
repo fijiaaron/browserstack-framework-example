@@ -30,7 +30,7 @@ public class CrossBrowserTest
 	public void setup(TestInfo testInfo) throws MalformedURLException
 	{
 		browserStackProperties.setProperty("test_name", getTestName(testInfo));
-		browserStackProperties.setProperty("build", "Testing Browserstack Framework");
+		browserStackProperties.setProperty("build", getBuild());
 	}
 
 
@@ -47,6 +47,7 @@ public class CrossBrowserTest
 		assertThat(title).contains("Stack");
 	}
 
+
 	public RemoteWebDriver getBrowser(String browserName) throws MalformedURLException
 	{
 		browserStackProperties.setProperty("browser", browserName);
@@ -57,6 +58,7 @@ public class CrossBrowserTest
 
 		return browser;
 	}
+
 
 	public String getTestName(TestInfo testInfo)
 	{
@@ -71,6 +73,18 @@ public class CrossBrowserTest
 
 		testName = className + " " + displayName;
 		return testName;
+	}
+
+
+	public String getBuild()
+	{
+		String build = System.getenv("BUILD_TAG");
+
+		if (build == null) {
+			build = "no build";
+		}
+
+		return build;
 	}
 
 

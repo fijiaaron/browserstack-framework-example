@@ -46,6 +46,13 @@ public class BrowserManager
     {
         String username = System.getenv("BROWSERSTACK_USERNAME");
         String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+
+        if (username == null || accessKey == null)
+        {
+            log.warning("Environment variables BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY must be set");
+            System.exit(-1);
+        }
+
         String browserstackUrl = "https://{username}:{access_key}@hub-cloud.browserstack.com/wd/hub"
                 .replace("{username}", username)
                 .replace("{access_key}", accessKey);
